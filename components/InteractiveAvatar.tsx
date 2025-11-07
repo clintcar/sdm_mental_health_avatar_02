@@ -7,6 +7,7 @@ import {
   STTProvider,
   ElevenLabsModel,
 } from "@heygen/streaming-avatar";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useMemoizedFn, useUnmount } from "ahooks";
 
@@ -18,20 +19,22 @@ import { AvatarControls } from "./AvatarSession/AvatarControls";
 import { useVoiceChat } from "./logic/useVoiceChat";
 import { useTextChat } from "./logic/useTextChat";
 import { StreamingAvatarProvider, StreamingAvatarSessionState } from "./logic";
-import { LoadingIcon } from "./Icons";
+import { FullScreenIcon, LoadingIcon } from "./Icons";
 import { MessageHistory } from "./AvatarSession/MessageHistory";
 
 import { AVATARS } from "@/app/lib/constants";
 
+const DEFAULT_BACKGROUND_IMAGE = "/dexter-lawyer-background.jpg";
+
 const DEFAULT_CONFIG: StartAvatarRequest = {
   quality: AvatarQuality.High,
-  avatarName: "Elenora_FitnessCoach2_public",
-  knowledgeId: "eb63bf40cd3e49639b1e96df629a6f3a",
+  avatarName: "Dexter_Lawyer_Sitting_public",
+  knowledgeId: "13921c4f7f3b4118a55ebbdbb205f5d4",
   voice: {
     rate: 1.0,
     emotion: "friendly" as VoiceEmotion,
     model: ElevenLabsModel.eleven_flash_v2_5,
-    voiceId: "e7f265ef0dc7426e8ed217c58da7e371",
+    voiceId: "",
   },
   language: "en",
   voiceChatTransport: VoiceChatTransport.WEBSOCKET,
@@ -162,7 +165,13 @@ function InteractiveAvatar() {
           {sessionState !== StreamingAvatarSessionState.INACTIVE ? (
             <AvatarVideo ref={mediaStream} />
           ) : (
-            <></>
+            <Image
+              src={DEFAULT_BACKGROUND_IMAGE}
+              alt="Avatar preview"
+              fill
+              priority
+              className="object-cover"
+            />
           )}
           {/* <div className="absolute top-8 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-75 text-white px-6 py-2 rounded-md text-lg font-medium">
             María Teresa Fuster
@@ -170,9 +179,9 @@ function InteractiveAvatar() {
           <button
             aria-label="Toggle Full Screen"
             onClick={toggleFullscreen}
-            className="absolute bottom-4 right-4 bg-zinc-900 text-white px-3 py-1 rounded-md text-sm"
+            className="absolute bottom-4 right-4 bg-zinc-900 text-white px-2 py-2 rounded-md text-sm flex items-center justify-center"
           >
-            Full Screen
+            <FullScreenIcon size={20} />
           </button>
           {sessionState === StreamingAvatarSessionState.CONNECTED && (
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-75 text-white px-4 py-2 rounded-md text-sm font-medium flex items-center gap-2">

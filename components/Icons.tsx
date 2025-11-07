@@ -231,3 +231,30 @@ export function CloseIcon({
     </svg>
   );
 }
+
+export function FullScreenIcon({
+  size = 24,
+  width,
+  height,
+  ...props
+}: IconSvgProps) {
+  return (
+    <svg
+      fill="none"
+      height={size || height}
+      viewBox="0 0 24 24"
+      width={size || width}
+      xmlns="http://www.w3.org/2000/svg"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="M9 4H5v4" />
+      <path d="M15 4h4v4" />
+      <path d="M9 20H5v-4" />
+      <path d="M15 20h4v-4" />
+    </svg>
+  );
+}
