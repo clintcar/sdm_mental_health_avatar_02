@@ -5,7 +5,6 @@ import { useVoiceChat } from "../logic/useVoiceChat";
 import { Button } from "../Button";
 import { useInterrupt } from "../logic/useInterrupt";
 
-import { AudioInput } from "./AudioInput";
 import { TextInput } from "./TextInput";
 
 export const AvatarControls: React.FC = () => {
@@ -20,7 +19,7 @@ export const AvatarControls: React.FC = () => {
   return (
     <div className="flex flex-col gap-3 relative w-full items-center">
       <ToggleGroup
-        className={`bg-zinc-200 rounded-lg p-1 ${isVoiceChatLoading ? "opacity-50" : ""}`}
+        className={`bg-zinc-800 rounded-lg p-1 ${isVoiceChatLoading ? "opacity-50" : ""}`}
         disabled={isVoiceChatLoading}
         type="single"
         value={isVoiceChatActive || isVoiceChatLoading ? "voice" : "text"}
@@ -37,19 +36,19 @@ export const AvatarControls: React.FC = () => {
         }}
       >
         <ToggleGroupItem
-          className="bg-zinc-100 data-[state=on]:bg-zinc-300 data-[state=on]:text-black rounded-lg p-2 text-sm w-[90px] text-center text-black"
+          className="bg-transparent data-[state=on]:bg-[#CFB87C] data-[state=on]:text-black rounded-lg p-2 text-sm w-[90px] text-center text-white"
           value="voice"
         >
           Voice Chat
         </ToggleGroupItem>
         <ToggleGroupItem
-          className="bg-zinc-100 data-[state=on]:bg-zinc-300 data-[state=on]:text-black rounded-lg p-2 text-sm w-[90px] text-center text-black"
+          className="bg-transparent data-[state=on]:bg-[#CFB87C] data-[state=on]:text-black rounded-lg p-2 text-sm w-[90px] text-center text-white"
           value="text"
         >
           Text Chat
         </ToggleGroupItem>
       </ToggleGroup>
-      {isVoiceChatActive || isVoiceChatLoading ? <AudioInput /> : <TextInput />}
+      {!isVoiceChatActive && !isVoiceChatLoading && <TextInput />}
       {/* <div className="absolute top-[-70px] right-3">
         <Button className="!bg-zinc-700 !text-white" onClick={interrupt}>
           Interrupt

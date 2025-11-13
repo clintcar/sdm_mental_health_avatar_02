@@ -18,16 +18,23 @@ export const AudioInput: React.FC = () => {
     }
   };
 
+  const getButtonClassName = () => {
+    if (isMuted) {
+      return `!p-2 relative !bg-red-500 hover:!bg-red-600 border-2 border-white`;
+    }
+    if (isUserTalking) {
+      return `!p-2 relative !bg-green-500 hover:!bg-green-600 border-2 border-white`;
+    }
+    return `!p-2 relative border-2 border-black`;
+  };
+
   return (
     <div>
       <Button
-        className={`!p-2 relative`}
+        className={getButtonClassName()}
         disabled={isVoiceChatLoading}
         onClick={handleMuteClick}
       >
-        <div
-          className={`absolute left-0 top-0 rounded-lg border-2 border-[#7559FF] w-full h-full ${isUserTalking ? "animate-ping" : ""}`}
-        />
         {isVoiceChatLoading ? (
           <LoadingIcon className="animate-spin" size={20} />
         ) : isMuted ? (
