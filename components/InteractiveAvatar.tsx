@@ -55,7 +55,7 @@ function InteractiveAvatar() {
   const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [backgroundImage, setBackgroundImage] = useState<string>(DEFAULT_BACKGROUND_IMAGE);
-  const [sessionDuration, setSessionDuration] = useState<number>(10);
+  const [sessionDuration, setSessionDuration] = useState<number>(0);
   const [customDuration, setCustomDuration] = useState<number>(10);
   const [remainingTime, setRemainingTime] = useState<number | null>(null);
 
@@ -171,8 +171,9 @@ function InteractiveAvatar() {
 
   useEffect(() => {
     if (sessionState === StreamingAvatarSessionState.CONNECTED && (sessionDuration > 0 || sessionDuration === -1)) {
-      const duration = sessionDuration === -1 ? customDuration : sessionDuration;
-      setRemainingTime(duration);
+      const durationMinutes = sessionDuration === -1 ? customDuration : sessionDuration;
+      const durationSeconds = durationMinutes * 60; // Convert minutes to seconds
+      setRemainingTime(durationSeconds);
     } else {
       setRemainingTime(null);
     }

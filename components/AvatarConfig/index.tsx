@@ -84,13 +84,18 @@ export const AvatarConfig: React.FC<AvatarConfigProps> = ({
               }
               return option === sessionDuration;
             }}
-            options={[5, 10, 15, 20, "custom"]}
+            options={[0, 5, 10, 15, 20, "custom"]}
             renderOption={(option) => {
-              return typeof option === "string" ? "Custom" : `${option} min`;
+              if (typeof option === "string") {
+                return "Custom";
+              }
+              return option === 0 ? "No timer" : `${option} min`;
             }}
             value={
               sessionDuration === -1
                 ? "Custom"
+                : sessionDuration === 0
+                ? "No timer"
                 : `${sessionDuration} min`
             }
             onSelect={(option) => {
