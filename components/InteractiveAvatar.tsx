@@ -29,8 +29,8 @@ const DEFAULT_BACKGROUND_IMAGE = "/demo.png";
 
 const DEFAULT_CONFIG: StartAvatarRequest = {
   quality: AvatarQuality.High,
-  avatarName: "Katya_Chair_Sitting_public",
-  knowledgeId: "8272cd788ce0447d8bc12bd627ad54a6",
+  avatarName: "Dexter_Lawyer_Sitting_public",
+  knowledgeId: "153feeebbb0347af9128a4e96eb1d78d",
   voice: {
     rate: 1.0,
     emotion: "friendly" as VoiceEmotion,
