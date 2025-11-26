@@ -9,7 +9,8 @@ export default function NavBar() {
         <div className="flex flex-row items-center justify-center gap-4">
           <div className="flex flex-col">
             <p className="text-2xl font-semibold text-black text-center">
-            CU Anschutz School of Dental Medicine - Health Assessment Avatar
+            CU Anschutz School of Dental Medicine Live Avatars<br />
+            - Screening patients using the PHQ2 and PHQ9 - Jessica
             </p>
           </div>
         </div>

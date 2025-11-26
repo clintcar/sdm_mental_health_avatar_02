@@ -25,12 +25,12 @@ import { AudioInput } from "./AvatarSession/AudioInput";
 
 import { AVATARS } from "@/app/lib/constants";
 
-const DEFAULT_BACKGROUND_IMAGE = "/dexter-lawyer-background.jpg";
+const DEFAULT_BACKGROUND_IMAGE = "/demo.png";
 
 const DEFAULT_CONFIG: StartAvatarRequest = {
   quality: AvatarQuality.High,
-  avatarName: "Dexter_Lawyer_Sitting_public",
-  knowledgeId: "13921c4f7f3b4118a55ebbdbb205f5d4",
+  avatarName: "Katya_Chair_Sitting_public",
+  knowledgeId: "8272cd788ce0447d8bc12bd627ad54a6",
   voice: {
     rate: 1.0,
     emotion: "friendly" as VoiceEmotion,
